@@ -1,0 +1,22 @@
+<div class="layout-row">
+  <ul class="sidebar" data-test-id="year-list">
+    <span class="section-title">Select Year</span>
+    <li *ngFor="let year of years;" class="sidebar-item"
+        [ngClass]="{'active': selectedYear === year}" (click)="onYearClick(year)">
+      <a>{{year}}</a>
+    </li>
+  </ul>
+
+  <section class="content">
+    <section>
+      <h3 *ngIf="totalMatches" data-test-id="total-matches">Total Matches: {{totalMatches}}</h3>
+      <ul *ngIf="totalMatches" class="mr-20 matches styled slide-up-fade-in" data-test-id="match-list">
+        <li *ngFor="let match of responseData" class="slide-up-fade-in">
+          Match {{match.name}} won by {{match.winner}}
+        </li>
+
+      </ul>
+    </section>
+    <p *ngIf="totalMatches === 0" data-test-id="no-result" class="slide-up-fade-in">No Matches Found</p>
+  </section>
+</div>
